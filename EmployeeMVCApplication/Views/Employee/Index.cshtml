@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EmployeeMVCApplication.EmployeeServiceReference.tblEmployee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@*@if (TempData["Msg"] != null)
+{
+    <h4>@TempData["Msg"].ToString()</h4>
+}*@
+
+@Html.ActionLink("Add Employee", "Create")
+@*@using (Html.BeginForm("Index", "Employee", FormMethod.Post))
+{ }*@
+
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EmpId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmpId }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Details", "Details", new { id = item.EmpId }, new { @class = "btn btn-info" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmpId }, new { @class = "btn btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
